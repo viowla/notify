@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:11
+    container_name: postgres-dev
+    restart: unless-stopped
+    ports:
+      - 5433:5433
+    env_file:
+      - .env
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: postgres
+    volumes:
+    - database:/var/lib/postgresql/data
+volumes:
+  database:
