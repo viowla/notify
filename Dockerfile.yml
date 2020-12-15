@@ -12,6 +12,90 @@ services:
       POSTGRES_PASSWORD: admin
       POSTGRES_USER: postgres
     volumes:
-    - database:/var/lib/postgresql/data
+      - database:/var/lib/postgresql/data
+  zuul:
+    container_name: zuul
+    build:
+      context: ./zuul
+    image: zuul
+    ports:
+      - 8762:8762
+  user:
+    container_name: user
+    build:
+      context: ./user
+    image: user
+    ports:
+      - 8086:8086
+  ticket:
+    container_name: ticket
+    build:
+      context: ./ticket
+    image: ticket
+    ports:
+      - 8085:8085
+  payment:
+    container_name: payment
+    build:
+      context: ./payment
+    image: payment
+    ports:
+      - 8084:8084
+  notify:
+    container_name: notify
+    build:
+      context: ./notify
+    image: notify
+    ports:
+      - 9000:9000
+  movie:
+    container_name: movie
+    build:
+      context: ./movie
+    image: movie
+    ports:
+      - 8082:8082
+  genre:
+    container_name: genre
+    build:
+      context: ./genre
+    image: genre
+    ports:
+      - 8083:8083
+  eureka:
+    container_name: eureka
+    build:
+      context: ./eureka
+    image: eureka
+    ports:
+      - 8761:8761
+  common:
+    container_name: common
+    build:
+      context: ./common
+    image: common
+    ports:
+      - 9200:9200
+  cinema:
+    container_name: cinema
+    build:
+      context: ./cinema
+    image: cinema
+    ports:
+      - 8081:8081
+  request:
+    container_name: request
+    build:
+      context: ./request
+    image: request
+    ports:
+      - 9900:9900
+  auth:
+    container_name: auth
+    build:
+      context: ./auth
+    image: auth
+    ports:
+      - 9100:9100
 volumes:
   database:
